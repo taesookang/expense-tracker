@@ -1,0 +1,56 @@
+.income,
+.expense {
+    flex: 1;
+    .card {
+        .detailWrapper {
+            width: 90%;
+            height: 90%;
+            display: flex;
+
+            .header {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                h3 {
+                    margin: 0;
+                    color: $text-gray;
+                    font-weight: 500;
+                }
+                h1 {
+                    margin-top: .5rem;
+                    color: $text-black;
+
+                    &.largeTotal {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+
+            .chartContainer {
+                @include va("center");
+                flex: 3;
+
+                .filler {
+                    @include va("center");
+                    display: flex;
+                    flex-direction: column;
+                    width: 15rem;
+                    height: 15rem;
+                    border-radius: 50%;
+                    background-color: $form-bg;
+                    color: $text-gray;
+                    
+                    h1 {
+                        font-size: 1.5rem;
+                        margin: 0;
+                        margin-bottom: 1rem;
+                    }
+                }
+                canvas {
+                    max-width: 20rem;
+                    max-height: 17rem;
+                }
+            }
+        }
+    }
+}

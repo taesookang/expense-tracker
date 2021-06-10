@@ -1,0 +1,23 @@
+// Colors
+
+$primary: #2962ff;
+$form-bg: #fafafa;
+$border: 1px solid #e0e0e0;
+
+$text-gray: #b4b4b4;
+$text-black: #424242;
+
+
+
+// Mixins
+
+@mixin va($va-align: center) {
+    display: flex;
+    align-items: center;
+
+    @if $va-align != center {
+        justify-content: left;
+    } @else {
+        justify-content: center;
+    }
+}
