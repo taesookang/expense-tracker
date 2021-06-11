@@ -1,57 +1,90 @@
 import React, { useState, useContext } from "react";
 import NumberFormat from "react-number-format";
-import { ExpenseTrackerContext } from '../../context/context'
-import { v4 as uuidv4 } from 'uuid'
-import { incomeCategories, expenseCategories  } from '../../constants/categories'
+import { ExpenseTrackerContext } from "../../context/context";
+import { v4 as uuidv4 } from "uuid";
+import {
+  incomeCategories,
+  expenseCategories,
+} from "../../constants/categories";
 
 const initialState = {
   type: "Income",
-  category: "",
+  category: "none",
   amount: "",
-  date: "",
+  date: "No Date",
+  note: ""
 };
-
 
 export default function Form() {
   const [formData, setFormData] = useState(initialState);
-  const { addTransaction } = useContext(ExpenseTrackerContext)
-  const selectedCategories = formData.type === 'Income' ? incomeCategories : expenseCategories ;
-  
+  const { addTransaction } = useContext(ExpenseTrackerContext);
+  const selectedCategories = formData.type === "Income" ? incomeCategories : expenseCategories;
+
   const createTransaction = (e) => {
     e.preventDefault();
-    const transaction = { ...formData, amount: Number(formData.amount.substring(1).replaceAll(",","")), id: uuidv4() } 
+    const transaction = {
+      ...formData,
+      amount: Number(formData.amount.substring(1).replaceAll(",", "")),
+      id: uuidv4(),
+    };
+
+    if(transaction.category === "") {
+      transaction.category=transaction.type;
+    } 
+
     addTransaction(transaction);
     setFormData(initialState);
-  }
+  };
 
+  const handleNoteChange = (e) => {
+    if(e.target.value !== "") {
+      setFormData({ ...formData, note: e.target.value })
+    }
+  }
 
   return (
     <div className="inputForm">
       <form action="">
         <div className="type inputArea">
           <label htmlFor="type">Type</label>
-          <select
-            name="type"
-            id="type"
-            value={formData.type}
-            onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-          >
-            <option value="Income">Income</option>
-            <option value="Expense">Expense</option>
-          </select>
+          <div className="radioBtn">
+            <input
+              type="radio"
+              value="Income"
+              checked={formData.type === "Income"}
+              onChange={(e) =>
+                setFormData({ ...formData, type: e.target.value })
+              }
+            />
+            <span>Income</span>
+            <input
+              type="radio"
+              value="Expense"
+              checked={formData.type === "Expense"}
+              onChange={(e) =>
+                setFormData({ ...formData, type: e.target.value })
+              }
+            />
+            <span>Expense</span>
+          </div>
         </div>
         <div className="category inputArea">
           <label htmlFor="category">Category</label>
           <select
             name="category"
             id="category"
-            value={formData.category}
             onChange={(e) =>
               setFormData({ ...formData, category: e.target.value })
             }
+            defaultValue="none"
           >
-            { selectedCategories.map((c) => (
-              <option key={c.type} value={c.type}>{c.type}</option>
+            <option value="none" hidden>
+              - - 
+            </option>
+            {selectedCategories.map((c) => (
+              <option key={c.type} value={c.type}>
+                {c.type}
+              </option>
             ))}
           </select>
         </div>
@@ -76,6 +109,10 @@ export default function Form() {
               setFormData({ ...formData, amount: e.target.value })
             }
           />
+        </div>
+        <div className="note inputArea">
+          <label>Note</label>
+          <textarea type="text" rows={3} value={formData.note} onChange={handleNoteChange} onSubmit={e => e.target.reset()} />
         </div>
         <button className="btn" type="submit" onClick={createTransaction}>
           Add Transaction

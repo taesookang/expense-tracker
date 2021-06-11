@@ -10,7 +10,7 @@ export default function Details({ title }) {
         <div className="detailWrapper">
           <div className="header">
             <h3>{title}</h3>
-            <h1 className={total > 100000 && "largeTotal"}>
+            <h1 className={total > 100000 ? "largeTotal" : "total"}>
               {total.toLocaleString("en-US", {
                 style: "currency",
                 currency: "USD",
@@ -20,8 +20,9 @@ export default function Details({ title }) {
           <div className="chartContainer">
             {total === 0 ? (
               <div className="filler">
-                <h1>No Data Yet.</h1>
-                <span>Please add a transaction.</span>
+                <img src="assets/pieChart.png" alt="" />
+                <h1>No data</h1>
+                <span>Please add a transaction</span>
               </div>
             ) : (
               <Doughnut data={chartData} />

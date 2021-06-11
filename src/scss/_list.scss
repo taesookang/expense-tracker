@@ -11,63 +11,125 @@
             text-align: center;
             border-bottom: $border;
         }
+        .filler {
+            width: 100%;
+            height: 100%;
+            @include va("center");
+            flex-direction: column;
+            img {
+                margin-top: -5rem;
+                width: 15rem;
+                height: 15rem;
+                object-fit: cover;
+                opacity: 0.5;
+            }
+            span {
+                color: $text-gray;
+                font-weight: 500;
+            }
+        }
         .transactions {
             flex: 10;
             overflow: scroll;
-            
+
             .tBox {
-                height: 3.5rem;
-                display: flex;
+                margin-top: 1rem;
+                flex-direction: column;
+                min-height: 3rem;
+                height: auto;
+                width: 100%;
                 border-bottom: $border;
+                transition: all 0.2s ease;
 
-                
-                .icon {
-                    @include va("center");
-                    flex: 2;
-                    svg {
-                        font-size: 2rem;
+                &.active {
+                    min-height: 8rem;
+
+                    .noteWrapper {
+                        display: flex;
                     }
                 }
-                .info {
+
+                .tWrapper {
+                    width: 100%;
+                    height: 100%;
                     display: flex;
-                    justify-content: center;
-                    flex-direction: column;
-                    flex: 5;
-                    font-weight: 500;
-                    padding-left: .5rem;
 
-                    h4 {
-                        margin: 0;
-                        font-size: .8rem;
-                        text-transform: capitalize;
+                    .icon {
+                        position: relative;
+                        @include va("center");
+                        flex: 2;
+                        svg {
+                            font-size: 2rem;
+                        }
+
+                        .indicator {
+                            background-color: red;
+                            min-width: 0.5rem;
+                            min-height: 0.5rem;
+                            border-radius: 80%;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                        }
                     }
-                    span {
-                        margin-top: .2rem;
-                        font-size: .8rem;
-                        color: $text-gray;
+                    .info {
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                        flex: 5;
+                        font-weight: 500;
+                        padding-left: 0.5rem;
+
+                        h4 {
+                            margin: 0;
+                            font-size: 0.8rem;
+                            text-transform: capitalize;
+                        }
+                        span {
+                            margin-top: 0.2rem;
+                            font-size: 0.8rem;
+                            color: $text-gray;
+                        }
                     }
-                    
+                    .amount {
+                        flex: 5;
+                        font-weight: 500;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+
+                        &.largeAmount {
+                            font-size: 0.8rem;
+                        }
+                    }
+                    .delete {
+                        @include va("center");
+                        flex: 2;
+
+                        svg {
+                            font-size: 1.2rem;
+                            cursor: pointer;
+                            color: $text-gray;
+                        }
+                    }
                 }
-                .amount {
-                    flex: 5;
-                    font-weight: 500;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-end;
-
-                    &.largeAmount {
-                        font-size: .8rem;
-                    }
-
-                }
-                .delete {
+                .noteWrapper {
                     @include va("center");
-                    flex: 2;
+                    display: none;
+                    height: 3rem;
+                    width: 100%;
+                    margin-top: 1rem;
 
-                    svg {
-                        font-size: 1.2rem;
-                        cursor: pointer;
-                        color: $text-gray;
+                    .note {
+                        background-color: $form-bg;
+                        height: 100%;
+                        width: 85%;
+                        padding: 0.5rem;
+                        display: flex;
+                        align-items: flex-start;
+                        color: $text-darkgray;
+                        font-size: 0.8rem;
+                        border-radius: 0.3rem;
                     }
                 }
             }

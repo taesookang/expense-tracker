@@ -6,10 +6,10 @@ $border: 1px solid #e0e0e0;
 
 $text-gray: #b4b4b4;
 $text-black: #424242;
+$text-darkgray: #6b6b6b;
 
 
-
-// Mixins
+// Mixin
 
 @mixin va($va-align: center) {
     display: flex;

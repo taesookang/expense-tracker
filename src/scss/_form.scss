@@ -44,7 +44,34 @@ select {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .type {
+            .radioBtn {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                margin-right: 1rem;
+
+                
+                input {
+                    cursor: pointer;
+                    margin: 0 .5rem;
+                    
+                    &:nth-child(3) {
+                        margin-left: 1rem;
+                    }
+                }
+            }
+
+
+
+            span {
+                font-size: .9rem;
+                color: $text-black;
+            }
         }
 
         .date {
@@ -64,6 +91,27 @@ select {
                 &::placeholder {
                     color: $text-gray;
                 }
+            }
+        }
+
+        .note {
+            @include va("center");
+            width: 100%;
+            flex-direction: column;
+
+            label {
+                width: 100%;
+            }
+            textarea {
+                width: 90%;
+                resize: none;
+                background-color: $form-bg;
+                border: $border;
+                padding: .5rem;
+                margin-top: .5rem;
+                font-size: 1rem;
+                border-radius: .3rem;
+                
             }
         }
 
