@@ -8,16 +8,27 @@ $text-gray: #b4b4b4;
 $text-black: #424242;
 $text-darkgray: #6b6b6b;
 
-
 // Mixin
 
-@mixin va($va-align: center) {
-    display: flex;
-    align-items: center;
+@mixin phone {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
 
-    @if $va-align != center {
-        justify-content: left;
-    } @else {
-        justify-content: center;
-    }
+@mixin tablet {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin va($va-align: center) {
+  display: flex;
+  align-items: center;
+
+  @if $va-align != center {
+    justify-content: left;
+  } @else {
+    justify-content: center;
+  }
 }

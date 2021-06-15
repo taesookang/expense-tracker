@@ -17,7 +17,6 @@ function App() {
         </div>
         <List />
       </div>
-      <footer>All rights reserved by <b>Taesoo</b></footer>
     </div>
   );
 }

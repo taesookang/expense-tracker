@@ -4,6 +4,16 @@ import useTransactions from "../../hooks/useTransaction";
 
 export default function Details({ title }) {
   const { total, chartData } = useTransactions(title);
+
+  const options = {
+    plugins: {
+      legend: {
+        position: "left",
+        align: "middle",
+      },
+    },
+  };
+
   return (
     <div className={title === "Income" ? "income" : "expense"}>
       <div className="card">
@@ -25,7 +35,7 @@ export default function Details({ title }) {
                 <span>Please add a transaction</span>
               </div>
             ) : (
-              <Doughnut data={chartData} />
+              <Doughnut data={chartData} options={options} />
             )}
           </div>
         </div>

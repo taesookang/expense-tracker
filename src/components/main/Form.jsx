@@ -6,12 +6,13 @@ import {
   incomeCategories,
   expenseCategories,
 } from "../../constants/categories";
+import MsgBar from "../msgBar/MsgBar";
 
 const initialState = {
   type: "Income",
-  category: "none",
+  category: "",
   amount: "",
-  date: "No Date",
+  date: "-",
   note: ""
 };
 
@@ -19,6 +20,7 @@ export default function Form() {
   const [formData, setFormData] = useState(initialState);
   const { addTransaction } = useContext(ExpenseTrackerContext);
   const selectedCategories = formData.type === "Income" ? incomeCategories : expenseCategories;
+  const [open, setOpen] = useState(false)
 
   const createTransaction = (e) => {
     e.preventDefault();
@@ -32,6 +34,7 @@ export default function Form() {
       transaction.category=transaction.type;
     } 
 
+    setOpen(true)
     addTransaction(transaction);
     setFormData(initialState);
   };
@@ -44,6 +47,7 @@ export default function Form() {
 
   return (
     <div className="inputForm">
+      <MsgBar open={open} setOpen={setOpen} />
       <form action="">
         <div className="type inputArea">
           <label htmlFor="type">Type</label>
@@ -93,8 +97,6 @@ export default function Form() {
           <input
             id="date"
             type="date"
-            placeholder="Date"
-            value={formData.date}
             onChange={(e) => setFormData({ ...formData, date: e.target.value })}
           />
         </div>

@@ -1,59 +1,91 @@
-.income,
-.expense {
-    flex: 1;
-    .card {
-        .detailWrapper {
-            width: 90%;
-            height: 90%;
-            display: flex;
+.details {
+    flex: 4;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 23rem;
 
-            .header {
-                flex: 1;
+    @include phone {
+        min-height: 50rem;
+        gap: 1rem;
+        width: 100vw;
+    }
+
+    .income,
+    .expense {
+        flex: 1;
+        height: 100%;
+        .card {
+            height: 100%;
+            .detailWrapper {
+                width: 90%;
+                height: 90%;
                 display: flex;
+                align-items: center;
                 flex-direction: column;
-                h3 {
-                    margin: 0;
-                    color: $text-gray;
-                    font-weight: 500;
-                }
-                h1 {
-                    margin-top: .5rem;
-                    color: $text-black;
 
-                    &.largeTotal {
-                        font-size: 1.5rem;
-                    }
-                }
-            }
-
-            .chartContainer {
-                @include va("center");
-                flex: 3;
-
-                .filler {
-                    @include va("center");
+                .header {
+                    flex: 1;
+                    width: 90%;
                     display: flex;
-                    flex-direction: column;
-                    width: 100%;
-                    height: 100%;
-                    color: $text-gray;
+                    align-items: center;
+                    justify-content: space-between;
+                    h3 {
+                        margin: 0;
+                        color: $text-gray;
+                        font-weight: 500;
+                    }
+                    h1 {
+                        margin: 0;
+                        color: $text-black;
 
-                    img {
-                        width: 10rem;
-                        height: 10rem;
-                        opacity: .3;
+                        &.largeTotal {
+                            font-size: 1.5rem;
+                        }
                     }
 
-                    
-                    h1 {
-                        font-size: 1rem;
-                        margin: 0;
-                        margin-top: 1rem;
+                    @include phone {
+                        @include va("center");
+                        flex-direction: column;
                     }
                 }
-                canvas {
-                    max-width: 20rem;
-                    max-height: 17rem;
+
+                .chartContainer {
+                    @include va("center");
+                    flex: 4;
+                    height: 100%;
+
+                    .filler {
+                        @include va("center");
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                        height: 100%;
+                        color: $text-gray;
+
+                        img {
+                            width: 10rem;
+                            height: 10rem;
+                            opacity: 0.3;
+                        }
+
+                        h1 {
+                            font-size: 1rem;
+                            margin: 0;
+                            margin-top: 1rem;
+                        }
+                    }
+                    canvas {
+                        width: 90%;
+                        max-width: 20rem;
+                        max-height: 17rem;
+
+                        @include tablet {
+                            max-width: auto;
+                            max-height: auto;
+                        }
+                    }
                 }
             }
         }

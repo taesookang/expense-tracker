@@ -17,15 +17,19 @@ select {
     height: 2.5rem;
     font-size: 1rem;
     font-weight: 500;
-    // border: 2px solid $primary;
     border: none;
     color: #fff;
     background-color: $primary;
-    border-radius: .3rem;
+    border-radius: 0.3rem;
     cursor: pointer;
 
     &:hover {
         font-weight: 600;
+    }
+
+    @include tablet {
+        font-size: 1.2rem;
+        height: 3rem;
     }
 }
 
@@ -46,7 +50,7 @@ select {
             justify-content: space-between;
             margin-top: 1.5rem;
         }
-        
+
         .type {
             .radioBtn {
                 width: 100%;
@@ -55,21 +59,18 @@ select {
                 justify-content: flex-end;
                 margin-right: 1rem;
 
-                
                 input {
                     cursor: pointer;
-                    margin: 0 .5rem;
-                    
+                    margin: 0 0.5rem;
+
                     &:nth-child(3) {
                         margin-left: 1rem;
                     }
                 }
             }
 
-
-
             span {
-                font-size: .9rem;
+                font-size: 0.9rem;
                 color: $text-black;
             }
         }
@@ -81,6 +82,7 @@ select {
         }
         .amount {
             width: 100%;
+            @include va("center");
             input {
                 width: 100%;
                 height: 2.3rem;
@@ -90,6 +92,12 @@ select {
 
                 &::placeholder {
                     color: $text-gray;
+                }
+
+                @include tablet {
+                    height: 3rem;
+                    width: 90%;
+                    font-size: 1.5rem;
                 }
             }
         }
@@ -107,17 +115,15 @@ select {
                 resize: none;
                 background-color: $form-bg;
                 border: $border;
-                padding: .5rem;
-                margin-top: .5rem;
+                padding: 0.5rem;
+                margin-top: 0.5rem;
                 font-size: 1rem;
-                border-radius: .3rem;
-                
+                border-radius: 0.3rem;
             }
         }
 
         button {
             margin-top: 2rem;
         }
-        
     }
 }

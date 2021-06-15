@@ -1,5 +1,9 @@
 .list {
     flex: 2;
+    min-height: 25rem;
+    height: 100%;
+    width: 100%;
+    min-width: 23rem;
     .listWrapper {
         width: 90%;
         height: 100%;
@@ -7,7 +11,7 @@
         flex-direction: column;
         .header {
             flex: 1;
-            color: #b4b4b4;
+            color: $text-gray;
             text-align: center;
             border-bottom: $border;
         }
@@ -25,7 +29,6 @@
             }
             span {
                 color: $text-gray;
-                font-weight: 500;
             }
         }
         .transactions {
@@ -63,7 +66,7 @@
                         }
 
                         .indicator {
-                            background-color: red;
+                            background-color: #ff0000;
                             min-width: 0.5rem;
                             min-height: 0.5rem;
                             border-radius: 80%;
