@@ -2,7 +2,9 @@
     display: flex;
     flex: 2;
     height: 100%;
-    min-width: 23rem;
+    @include tablet {
+        min-width: 23rem;
+    }
     @include phone {
         max-height: 43rem;
         .main-wrapper {

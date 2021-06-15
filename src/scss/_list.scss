@@ -1,9 +1,12 @@
 .list {
     flex: 2;
-    min-height: 25rem;
     height: 100%;
     width: 100%;
-    min-width: 23rem;
+    min-height: 25rem;
+    @include phone {
+
+        min-width: 23rem;
+    }
     .listWrapper {
         width: 90%;
         height: 100%;
