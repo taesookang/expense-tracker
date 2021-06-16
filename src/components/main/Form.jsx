@@ -114,7 +114,7 @@ export default function Form() {
         </div>
         <div className="note inputArea">
           <label>Note</label>
-          <textarea type="text" rows={3} value={formData.note} onChange={handleNoteChange} onSubmit={e => e.target.reset()} />
+          <textarea type="text" rows={3} onChange={handleNoteChange} onSubmit={e => e.target.reset()} />
         </div>
         <button className="btn" type="submit" onClick={createTransaction}>
           Add Transaction

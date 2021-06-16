@@ -4,7 +4,10 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    min-width: 23rem;
+    min-width: 30rem;
+    @include tablet {
+        min-width: 20rem;
+    }
 
     @include phone {
         min-height: 50rem;
